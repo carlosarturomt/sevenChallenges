@@ -42,7 +42,6 @@ function matrixSum($n)
   return $sum;
 }
 // echo matrixSum($a) . "\n";
-
 function matrixSubtraction($n)
 {
   $subtraction = 0;
@@ -54,7 +53,6 @@ function matrixSubtraction($n)
   return $subtraction;
 }
 // echo matrixSubtraction($n) . "\n";
-
 function matrixMultiplication($n)
 {
   $multiplication = 1;
@@ -66,15 +64,9 @@ function matrixMultiplication($n)
   return $multiplication;
 }
 // echo matrixMultiplication($n). "\n";
-
 // (A*B)+C;
-echo "'A' es igual a: ";
-print_r($a);
-echo "'B' es igual a: ";
-print_r($b);
-echo "'C' es igual a: ";
-print_r($c);
-echo "La suma de los valores de 'A' es: " . matrixSum($a) . "\n";
-echo "La suma de los valores de 'B' es: " . matrixSum($b) . "\n";
-echo "La suma de los valores de 'C' es: " . matrixSum($c) . "\n";
-echo "(A*B)+C = " . matrixSum($a) * matrixSum($b) + matrixSum($c) . "\n";
+echo "(A*B)+C = " . (matrixSum($a) * matrixSum($b)) + matrixSum($c) . "\n";
+// (C/2)*B-A;
+echo "(C/2)*B-A = " . (matrixSum($c) / 2) * matrixSum($b) * matrixSum($c) . "\n";
+// (A+B)-C;
+echo "(A+B)-C = " . (matrixSum($a) * matrixSum($b)) - matrixSum($c) . "\n";
