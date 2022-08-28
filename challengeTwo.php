@@ -1,72 +1,80 @@
 <?php
 
-// ---R E S O L V I N G   M A T R I X---
-$a[0][0] = 1;
-$a[0][1] = 2;
+$m1 = [
+  [2, 0, 1],
+  [3, 0, 0],
+  [5, 1, 1]
+];
 
-$a[1][0] = 3;
-$a[1][1] = 4;
+$m2 = [
+  [1, 0, 1],
+  [1, 2, 1],
+  [1, 1, 0]
+];
 
-$a[2][0] = 5;
-$a[2][1] = 6;
+$m3 = [
+  [7, -5, 2],
+  [4, -2, 2],
+  [1, -4, 2]
+];
 
-
-$b[0][0] = 7;
-$b[0][1] = 8;
-
-$b[1][0] = 9;
-$b[1][1] = 10;
-
-$b[2][0] = 11;
-$b[2][1] = 12;
-
-
-$c[0][0] = -3;
-$c[0][1] = 0;
-
-$c[1][0] = 2;
-$c[1][1] = 5;
-
-$c[2][0] = 8;
-$c[2][1] = -7;
-// print_r($a);
-
-function matrixSum($n)
+function sum($m, $n)
 {
-  $sum = 0;
-  for ($i = 0; $i <= 2; $i++) {
-    for ($j = 0; $j <= 1; $j++) {
-      $sum += $n[$i][$j];
+  $result = [];
+  for ($i = 0; $i < count($m); $i++) {
+    for ($j = 0; $j < count($m); $j++) {
+      $result[$i][$j] = $m[$i][$j] + $n[$i][$j];
     }
   }
-  return $sum;
+  return $result;
 }
-// echo matrixSum($a) . "\n";
-function matrixSubtraction($n)
+
+function multiplication($m, $n)
 {
-  $subtraction = 0;
-  for ($i = 0; $i <= 2; $i++) {
-    for ($j = 0; $j <= 1; $j++) {
-      $subtraction -= $n[$i][$j];
+  $result = [];
+  for ($i = 0; $i < count($m); $i++) {
+    for ($j = 0; $j < count($n[0]); $j++) {
+      for ($k = 0; $k < count($m[0]); $k++) {
+        $result[$i][$j] += $m[$i][$k] * $n[$k][$j];
+      }
     }
   }
-  return $subtraction;
+  return $result;
 }
-// echo matrixSubtraction($n) . "\n";
-function matrixMultiplication($n)
+
+function subtraction($m, $n)
 {
-  $multiplication = 1;
-  for ($i = 0; $i <= 2; $i++) {
-    for ($j = 0; $j <= 1; $j++) {
-      $multiplication *= $n[$i][$j];
+  $result = [];
+  for ($i = 0; $i < count($m); $i++) {
+    for ($j = 0; $j < count($m); $j++) {
+      $result[$i][$j] = $m[$i][$j] -= $n[$i][$j];
     }
   }
-  return $multiplication;
+  return $result;
 }
-// echo matrixMultiplication($n). "\n";
-// (A*B)+C;
-echo "(A*B)+C = " . (matrixSum($a) * matrixSum($b)) + matrixSum($c) . "\n";
-// (C/2)*B-A;
-echo "(C/2)*B-A = " . (matrixSum($c) / 2) * matrixSum($b) * matrixSum($c) . "\n";
-// (A+B)-C;
-echo "(A+B)-C = " . (matrixSum($a) * matrixSum($b)) - matrixSum($c) . "\n";
+
+function division($m)
+{
+  $result = [];
+  for ($i = 0; $i < count($m); $i++) {
+    for ($j = 0; $j < count($m); $j++) {
+      $result[$i][$j] = $m[$i][$j] /= 2;
+    }
+  }
+  return $result;
+}
+
+// (A*B) + C =
+// print_r(multiplication($m1, $m2));
+// print_r($m3);
+print_r(sum((multiplication($m1, $m2)), $m3));
+
+// (C/2)*B-A =
+// print_r(division($m3));
+// print_r(subtraction($m2, $m1));
+print_r(multiplication((division($m3)), subtraction($m2, $m1)));
+
+// (A+B)-C =
+// print_r(sum($m1, $m2));
+// print_r($m3);
+print_r(subtraction((sum($m1, $m2)), $m3));

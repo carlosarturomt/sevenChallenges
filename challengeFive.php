@@ -6,9 +6,10 @@ $string = readline("Nombre completo: ");
 function challengeFive($string) {
   $array = str_split($string, 1);
   // print_r($array);
-  for ($i=count($array); $i >= 0; $i--) { 
-    echo "$array[$i]  \n";
+  for ($i=count($array)-1; $i >= 0; $i--) { 
+    echo "$array[$i]";
   }
+  echo "\n";
 }
 challengeFive($string);
 

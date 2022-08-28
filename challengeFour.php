@@ -1,31 +1,27 @@
 <?php
 
 // ---N U M B E R   O F   R E P E T I T I O N S---
-$string = "Crea una función que calcule la cantidad de veces que se repite una palabra que
-recibe como parámetro. Escribe el resultado en la consola .";
+$string = "Hola hola Adios, adios ADIOS HolA php .";
 echo "\n $string \n\n";
-$word = readline('Escribe una palabra para ver cuántas veces se repite ésta en el texto mostado: ');
+$word = readline('Escribe una palabra en minúsculas para ver cuántas veces se repite ésta en el texto mostrado: ');
 
-function challengeFour($string, $valor) {
-
+function challengeFour($string, $valor)
+{
   $array = explode(' ', strtolower($string));
+  $valor = strtolower($valor);
+  $sum = 0;
   // var_dump($array);
-  $suma = 0;
-
-  if (is_array($array) && $valor) {
-    foreach ($array as $value) {
-      if ($value == $valor) {
-        $suma++;
-      }
+  foreach ($array as $value) {
+    if ($value == $valor) {
+      $sum++;
     }
   }
-  echo "Tu palabra se repite $suma veces.\n";
+  return $sum;
 }
-challengeFour($string, $word);
+$result = challengeFour($string, $word);
+echo "Tu palabra se repite $result veces.\n";
 
 
 // ---E A S Y   F O R M--- 
 // $array = explode(' ', strtolower($string));
 // print_r(array_count_values($array));
-
-?>
