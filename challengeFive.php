@@ -4,7 +4,7 @@
 $string = readline("Nombre completo: ");
 
 function challengeFive($string) {
-  $array = str_split($string, 1);
+  $array = str_split($string, 1); // Convierte un string en un array. 
   // print_r($array);
   for ($i=count($array)-1; $i >= 0; $i--) { 
     echo "$array[$i]";

@@ -15,7 +15,7 @@ function orderingArray($numbers){
   }
   return $numbers;
 }
-
+// print_r(orderingArray($array));
 $order = orderingArray($array);
 
 echo "Los números ya ordenados serían: \n";
